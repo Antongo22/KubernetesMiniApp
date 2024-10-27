@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myfastapiapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myfastapiapp
+  template:
+    metadata:
+      labels:
+        app: myfastapiapp
+    spec:
+      containers:
+      - name: myfastapiapp
+        image: myfastapiapp:latest
+        imagePullPolicy: IfNotPresent    
+        ports:
+        - containerPort: 8080

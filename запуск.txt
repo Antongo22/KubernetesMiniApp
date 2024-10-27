@@ -1,0 +1,15 @@
+minikube start
+docker build -t myfastapiapp .
+minikube image load myfastapiapp:latest
+
+minikube ssh -- docker images | grep myfastapiapp # проверить что всё работает
+
+kubectl apply -f service.yaml
+kubectl apply -f deployment.yaml
+
+kubectl get pods # проверить что всё работает
+
+minikube ip # получить ip
+
+# перейти по <ip>:30001/
+# скорее всего это будет http://192.168.49.2:30001/
